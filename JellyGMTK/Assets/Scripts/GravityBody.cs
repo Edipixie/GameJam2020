@@ -4,11 +4,11 @@ using System.Collections;
 [RequireComponent (typeof (Rigidbody))]
 public class GravityBody : MonoBehaviour {
 	
-	GravityAttractor planet;
+	GravityAttractor playerAttractor;
 	Rigidbody myrigidbody;
 	
 	void Awake () {
-		planet = GameObject.FindGameObjectWithTag("Player").GetComponent<GravityAttractor>();
+		playerAttractor = GameObject.FindGameObjectWithTag("Player").GetComponent<GravityAttractor>();
 		myrigidbody = GetComponent<Rigidbody> ();
 
 		// Disable rigidbody gravity and rotation as this is simulated in GravityAttractor script
@@ -18,6 +18,6 @@ public class GravityBody : MonoBehaviour {
 	
 	void FixedUpdate () {
 		// Allow this body to be influenced by planet's gravity
-		planet.Attract(myrigidbody);
+		playerAttractor.Attract(myrigidbody);
 	}
 }
